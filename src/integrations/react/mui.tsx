@@ -3,8 +3,13 @@
 import { qwikify$ } from "@builder.io/qwik-react";
 import { Button, Slider } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import {server$} from '@builder.io/qwik-city';
 
-export const MUIButton = qwikify$(Button);
+const serverLog=server$(()=>{
+  console.log('mui server log')
+})
+
+export const MUIButton = qwikify$(Button,{eagerness:'load'});
 export const MUISlider = qwikify$(Slider, { eagerness: "hover" });
 
 export const TableApp = qwikify$(() => {
